@@ -13,7 +13,7 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
-    - name: Install dependencies
+    - name: Install python dependencies
       run: pip install -r requirements.txt
     - name: Run tests
       run: python -m unittest
@@ -24,4 +24,8 @@ jobs:
     - name: Install npm dependencies
       run: npm i
     - name: Deploy
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
       run: npm run deploy
