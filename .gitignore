@@ -11,3 +11,4 @@ build/
 venv/
 node_modules/
 .env
+.serverless/
