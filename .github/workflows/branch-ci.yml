@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - '**'        # matches every branch
-      - '!master'   # excludes main
+      - '!main'   # excludes main
 
 jobs:
   Testing:
