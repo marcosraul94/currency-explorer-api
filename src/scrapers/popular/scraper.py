@@ -8,13 +8,13 @@ def scrape() -> CurrencyExchange:
     headers = {'user-agent': 'n/a', 'accept': 'application/json; odata=verbose'}
 
     res = r.get(url, headers=headers)
-    data = res.json()['d']['results'][0]
+    d = res.json()['d']['results'][0]
 
     return CurrencyExchange(
-        dollar_buy=data['DollarBuyRate'],
-        dollar_sell=data['DollarSellRate'],
-        euro_buy=data['EuroBuyRate'],
-        euro_sell=data['EuroSellRate'],
+        dollar_buy=d['DollarBuyRate'],
+        dollar_sell=d['DollarSellRate'],
+        euro_buy=d['EuroBuyRate'],
+        euro_sell=d['EuroSellRate'],
     )
 
 
