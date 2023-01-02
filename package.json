@@ -5,7 +5,9 @@
   "author": "marcosraul94@gmail.com",
   "scripts": {
     "start": "serverless wsgi serve --port 2000",
-    "deploy": "serverless deploy"
+    "deploy": "serverless deploy",
+    "test": "python -m unittest",
+    "install": "pip install -r requirements.txt"
   },
   "dependencies": {
     "serverless": "^3.26.0"
