@@ -6,8 +6,8 @@
   "scripts": {
     "start": "npm run set-test-env && serverless wsgi serve --port 2000",
     "deploy": "serverless deploy",
-    "unit-tests": "npm run set-test-env && python -m unittest discover test",
-    "e2e-tests": "npm run set-test-env && npm run migrate && python -m unittest discover e2e",
+    "unit-tests": "npm run set-test-env && python -m unittest discover --buffer test",
+    "e2e-tests": "npm run set-test-env && npm run migrate && python -m unittest discover --buffer e2e",
     "install": "pip install -r requirements.txt",
     "migrate": "python -m flask db upgrade",
     "downgrade": "python -m flask db downgrade",
