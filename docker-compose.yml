@@ -9,7 +9,3 @@ services:
       - POSTGRES_USER=${DB_USER:-admin}
       - POSTGRES_PASSWORD=${DB_PASS:-password}
       - POSTGRES_DB=${DB_NAME:-currency-explorer}
-  redis:
-    image: "redis:6.2.7-alpine"
-    ports:
-      - "6379:6379"

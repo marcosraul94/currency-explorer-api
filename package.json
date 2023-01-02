@@ -7,7 +7,10 @@
     "start": "serverless wsgi serve --port 2000",
     "deploy": "serverless deploy",
     "test": "python -m unittest",
-    "install": "pip install -r requirements.txt"
+    "install": "pip install -r requirements.txt",
+    "migrate": "python -m flask db upgrade",
+    "downgrade": "python -m flask db downgrade",
+    "create-migration": "python -m flask db migrate -m"
   },
   "dependencies": {
     "serverless": "^3.26.0"
