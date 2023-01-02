@@ -1,5 +1,6 @@
 import uuid
-from sqlalchemy import Text, Column, DateTime
+from sqlalchemy import Text, Column, DateTime, Numeric, ForeignKey, Date
+from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from src.common.app import db
 
@@ -14,5 +15,20 @@ class Base(db.Model):
 
 class Bank(Base):
     __tablename__ = 'bank'
-
+    # the id is the name
     link = Column(Text(), nullable=False)
+
+    exchanges = relationship('Exchange', back_populates="bank")
+
+
+class Exchange(Base):
+    __tablename__ = 'exchange'
+
+    date = Column(Date(), nullable=False)
+    dollar_buy = Column(Numeric(precision=2), nullable=True)
+    dollar_sell = Column(Numeric(precision=2), nullable=True)
+    euro_buy = Column(Numeric(precision=2), nullable=True)
+    euro_sell = Column(Numeric(precision=2), nullable=True)
+    bank_id = Column(Text(), ForeignKey("bank.id"), nullable=False)
+
+    bank = relationship('Bank', back_populates="exchanges")

@@ -3,9 +3,9 @@ from src.common.currency_exchange import CurrencyExchange
 
 
 class Scraper:
-    def __init__(self, scrape: Callable, name: str):
+    def __init__(self, scrape: Callable, bank_name: str):
         self.scrape = scrape
-        self.name = name
+        self.bank_name = bank_name
 
     def __call__(self) -> CurrencyExchange:
         self.log('Scraping...')
@@ -15,4 +15,4 @@ class Scraper:
         return currency_exchange
 
     def log(self, message):
-        print(f'***{self.name}***', message)
+        print(f'***{self.bank_name} Scraper***', message)

@@ -1,7 +1,7 @@
 class BankIds:
     @property
     def popular(self):
-        return 'popular'
+        return 'Popular'
 
 
 bank_ids = BankIds()

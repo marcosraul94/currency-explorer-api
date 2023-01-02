@@ -1,8 +1,11 @@
 import os
 
-host = os.environ.get('DB_HOST', 'localhost')
-user = os.environ.get('DB_USER', 'admin')
-password = os.environ.get('DB_PASS', 'password')
-name = os.environ.get('DB_NAME', 'currency-explorer')
+test_env = 'test'
+env = os.environ.get('ENV', test_env)
+
+host = 'localhost' if env == test_env else os.environ['DB_HOST']
+user = 'master' if env == test_env else os.environ['DB_USER']
+password = 'password' if env == test_env else os.environ['DB_PASS']
+name = 'currencies' if env == test_env else os.environ['DB_NAME']
 
 db_uri = f'postgresql://{user}:{password}@{host}/{name}'

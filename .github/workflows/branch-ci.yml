@@ -2,7 +2,7 @@ name: Branch CI
 on:
   push:
     branches:
-      - '**'        # matches every branch
+      - '**'      # matches every branch
       - '!main'   # excludes main
 
 jobs:
@@ -14,8 +14,12 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
-    - name: Install dependencies
+    - name: Install python dependencies
       run: pip install -r requirements.txt
-    - name: Run tests
-      run: python -m unittest
+    - name: Setting up node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.13.1
+    - name: Run unit tests
+      run: npm run unit-tests
 

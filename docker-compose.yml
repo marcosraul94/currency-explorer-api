@@ -6,6 +6,6 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_USER=${DB_USER:-admin}
+      - POSTGRES_USER=${DB_USER:-master}
       - POSTGRES_PASSWORD=${DB_PASS:-password}
-      - POSTGRES_DB=${DB_NAME:-currency-explorer}
+      - POSTGRES_DB=${DB_NAME:-currencies}
