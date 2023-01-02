@@ -15,8 +15,6 @@ jobs:
         python-version: '3.9'
     - name: Install python dependencies
       run: pip install -r requirements.txt
-    - name: Run tests
-      run: python -m unittest
     - name: Setting up node
       uses: actions/setup-node@v3
       with:

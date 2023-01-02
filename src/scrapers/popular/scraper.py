@@ -1,6 +1,7 @@
 import requests as r
 from src.common.scraper import Scraper
 from src.common.currency_exchange import CurrencyExchange
+from src.common.bank_ids import bank_ids
 
 
 def scrape() -> CurrencyExchange:
@@ -18,4 +19,4 @@ def scrape() -> CurrencyExchange:
     )
 
 
-popular_scraper = Scraper(scrape, 'Popular scraper')
+popular_scraper = Scraper(scrape, bank_ids.popular)
