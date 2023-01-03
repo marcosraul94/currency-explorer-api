@@ -23,7 +23,7 @@ jobs:
     - name: Run unit tests
       run: npm run unit-tests
 
-  E2E tests:
+  Integration tests:
     services:
       postgres:
         image: postgres:13
