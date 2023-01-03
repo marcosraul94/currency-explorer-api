@@ -6,7 +6,7 @@ on:
       - '!main'   # excludes main
 
 jobs:
-  Testing:
+  Unit tests:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -22,4 +22,38 @@ jobs:
         node-version: 16.13.1
     - name: Run unit tests
       run: npm run unit-tests
+
+  E2E tests:
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_DB: currencies
+          POSTGRES_USER: master
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5432:5432
+        # Set health checks to wait until postgres has started
+        options:
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setting up python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    - name: Install python dependencies
+      run: pip install -r requirements.txt
+    - name: Setting up node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.13.1
+    - name: Run unit tests
+      run: npm run e2e-tests
 
