@@ -6,7 +6,7 @@ on:
       - '!main'   # excludes main
 
 jobs:
-  Unit tests:
+  Unit_tests:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -23,7 +23,7 @@ jobs:
     - name: Run unit tests
       run: npm run unit-tests
 
-  Integration tests:
+  Integration_tests:
     services:
       postgres:
         image: postgres:13
