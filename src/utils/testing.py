@@ -1,5 +1,6 @@
 from unittest import TestCase
 from src.common.app import session, context
+from src.common.models import Exchange
 
 
 class MockResponse:
@@ -23,3 +24,8 @@ class E2ETest(TestCase):
             DELETE FROM exchange;
             """)
             session.commit()
+
+
+class UnitTest(TestCase):
+    def assertEqualExchange(self, received: Exchange, expected: Exchange):
+        return self.assertEqual(received.to_dict(), expected.to_dict())
