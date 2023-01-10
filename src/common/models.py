@@ -25,10 +25,10 @@ class Exchange(Base):
     __tablename__ = 'exchange'
 
     date = Column(Date(), nullable=False)
-    dollar_buy = Column(Numeric(precision=2), nullable=True)
-    dollar_sell = Column(Numeric(precision=2), nullable=True)
-    euro_buy = Column(Numeric(precision=2), nullable=True)
-    euro_sell = Column(Numeric(precision=2), nullable=True)
+    dollar_buy = Column(Numeric(precision=5, scale=2), nullable=True)
+    dollar_sell = Column(Numeric(precision=5, scale=2), nullable=True)
+    euro_buy = Column(Numeric(precision=5, scale=2), nullable=True)
+    euro_sell = Column(Numeric(precision=5, scale=2), nullable=True)
     bank_id = Column(Text(), ForeignKey("bank.id"), nullable=False)
 
     bank = relationship('Bank', back_populates="exchanges")

@@ -20,7 +20,6 @@ class E2ETest(TestCase):
     def setUp(self) -> None:
         with context():
             session.execute("""
-            DELETE FROM bank;
             DELETE FROM exchange;
             """)
             session.commit()
