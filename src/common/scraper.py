@@ -19,7 +19,7 @@ class Scraper:
     def scrape(self) -> Exchange:
         self.log('Scraping...')
         exchange = self._scrape()
-        self.log('Exchange response:', exchange)
+        self.log('Scraping response:', exchange)
 
         return exchange
 
@@ -29,7 +29,8 @@ class Scraper:
         with context():
             session.add(exchange)
             session.commit()
+            session.refresh(exchange)
 
-        self.log('Saved completed')
+        self.log('Saved completed:', exchange)
 
         return exchange
