@@ -9,5 +9,3 @@ password = 'password' if env == test_env else os.environ['DB_PASS']
 name = 'currencies' if env == test_env else os.environ['DB_NAME']
 
 db_uri = f'postgresql://{user}:{password}@{host}/{name}'
-
-print('****\n', db_uri, '***\n')
